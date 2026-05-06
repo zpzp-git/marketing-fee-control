@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useMemo, useState } from "react";
+import { DemoModuleNav } from "../components/DemoModuleNav";
 
 type ViewMode = "workbench" | "payables" | "prepayments" | "adBalances" | "adDetails" | "applications";
 type DocumentStatus = "草稿" | "审批中" | "已驳回" | "审批通过" | "待付款" | "支付中" | "支付成功" | "支付失败" | "已完成" | "已重付";
@@ -1324,15 +1325,19 @@ export default function PaymentManagementPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 p-6 text-slate-900">
+    <main className="min-h-screen bg-slate-50 text-slate-900">
       {overlayLoading && <LoadingMask full text={overlayLoading} />}
       {toast && <div className="fixed right-6 top-6 z-50 rounded-lg bg-slate-900 px-4 py-3 text-sm text-white shadow-lg">{toast}</div>}
 
-      <div className="mx-auto max-w-7xl space-y-4">
+      <div className="flex min-h-screen">
+        <DemoModuleNav active="payment-management" title="付款管理" />
+
+        <section className="min-w-0 flex-1 p-4 md:p-6">
+          <div className="mx-auto max-w-7xl space-y-4">
         <header className="flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm lg:flex-row lg:items-center lg:justify-between">
           <div>
             <div className="text-sm text-slate-500">费用申请与资金 / 付款管理</div>
-            <h1 className="mt-1 text-2xl font-semibold tracking-normal">3.7.13 付款管理</h1>
+            <h1 className="mt-1 text-2xl font-semibold tracking-normal">付款管理模块</h1>
             <p className="mt-1 text-sm text-slate-500">对公付款、供应商预付款、投放充值、退款与退票重付的 mock 演示闭环。</p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -1629,7 +1634,7 @@ export default function PaymentManagementPage() {
             </TableWrap>
           </Section>
         )}
-      </div>
+          </div>
 
       {corporateForm && selectedCorporatePayable && (
         <Modal title="对公付款申请单" onClose={() => setCorporateForm(null)} size="xl">
@@ -1866,6 +1871,8 @@ export default function PaymentManagementPage() {
 
       {detail && <DetailModal detail={detail} onClose={() => setDetail(null)} onReceipt={(row) => setReceiptApplication(row)} />}
       {receiptApplication && <ReceiptModal application={receiptApplication} onClose={() => setReceiptApplication(null)} />}
+        </section>
+      </div>
     </main>
   );
 }

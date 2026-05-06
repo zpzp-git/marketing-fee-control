@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useMemo, useState } from "react";
+import { DemoModuleNav } from "../components/DemoModuleNav";
 
 type ViewMode = "ledger" | "pushes" | "applications";
 type PushStatus = "待生成" | "已生成" | "推送失败" | "重复推送" | "已忽略";
@@ -790,34 +791,10 @@ export default function InternalUsePage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="flex min-h-screen">
-        <aside className="hidden w-56 shrink-0 border-r border-slate-200 bg-white xl:block">
-          <div className="border-b border-slate-200 p-5">
-            <div className="text-sm font-semibold text-blue-600">营销费控 Demo</div>
-            <div className="mt-1 text-lg font-semibold">内部领用</div>
-          </div>
-          <nav className="space-y-1 p-3 text-sm">
-            {[
-              ["工作台", "Overview"],
-              ["基础数据", "Base Data"],
-              ["预算管理", "Budget"],
-              ["营销计划与事项", "Plan & Matter"],
-              ["合同与 PO", "Contract & PO"],
-              ["费用申请与资金", "Payment & Fund"],
-              ["发票与核销", "Invoice"],
-              ["费用预估", "Estimation"],
-              ["对账结算", "Settlement"],
-              ["财务处理", "Finance"]
-            ].map(([label, sub]) => (
-              <div key={label} className={`rounded-md px-3 py-2 ${label === "财务处理" ? "bg-blue-50 text-blue-700" : "text-slate-500"}`}>
-                <div className="font-medium">{label}</div>
-                <div className="text-xs opacity-70">{sub}</div>
-              </div>
-            ))}
-          </nav>
-        </aside>
+        <DemoModuleNav active="internal-use" title="内部领用" />
 
         <section className="min-w-0 flex-1 p-4 md:p-6">
-          <div className="mb-4 text-sm text-slate-500">财务处理 / 内部领用 / 3.7.12</div>
+          <div className="mb-4 text-sm text-slate-500">财务处理 / 内部领用</div>
           <header className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
             <div>
               <h1 className="text-2xl font-semibold tracking-normal">内部领用模块</h1>
