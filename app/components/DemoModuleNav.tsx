@@ -13,6 +13,7 @@ export type DemoModuleKey =
   | "deposit-management"
   | "payment-management"
   | "invoice-management"
+  | "fee-estimation"
   | "fee-reconciliation"
   | "receivables"
   | "internal-use"
@@ -34,6 +35,7 @@ const moduleNavItems: Array<{
   { key: "deposit-management", label: "保证金管理", sub: "Deposit", href: "/deposit-management" },
   { key: "payment-management", label: "付款管理", sub: "Payment", href: "/payment-management" },
   { key: "invoice-management", label: "发票管理", sub: "Invoice", href: "/invoice-management" },
+  { key: "fee-estimation", label: "费用预估", sub: "Estimation", href: "/fee-estimation" },
   { key: "fee-reconciliation", label: "费用对账结算", sub: "Settlement", href: "/fee-reconciliation" },
   { key: "receivables", label: "应收账款", sub: "Receivables", href: "/receivables" },
   { key: "internal-use", label: "内部领用", sub: "Internal Use", href: "/internal-use" },
